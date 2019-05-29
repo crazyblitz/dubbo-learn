@@ -1,0 +1,66 @@
+
+
+# Spring boot application
+spring:
+  application:
+    name: dubbo-provider
+
+# UserService service version
+hello:
+  service:
+    version: 1.0.0
+protocol:
+  port: 12345
+
+
+# Dubbo Config properties
+dubbo:
+  ## ApplicationConfig Bean
+  application:
+    id: dubbo-provider
+    name: dubbo-provider
+##dubbo的运维端口
+#    qos-port: 22222
+#    qos-enable: true
+
+
+  ## ProtocolConfig Bean
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: ${protocol.port}
+    status: server
+    serialization: kryo
+
+  ## RegistryConfig Bean
+  registry:
+    id: zookeeper
+    address: zookeeper://139.199.133.171:2181
+    #zookeeper高可用版本
+    #address: zookeeper://192.168.10.131:2181?backup=192.168.10.131:2182,192.168.10.131:2183
+
+
+
+# Enables Dubbo All Endpoints
+management:
+  endpoint:
+    dubbo:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-configs:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-references:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+        ## StatusChecker Name extras (default : empty )
+        extras: load,threadpool

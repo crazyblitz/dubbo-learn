@@ -1,0 +1,57 @@
+# Spring boot application
+spring:
+  application:
+    name: dubbo-consumer
+server:
+  port: 9090
+
+# UserService service version
+hello:
+  service:
+    version: 1.0.0
+
+# Dubbo Config properties
+dubbo:
+  scan:
+    basePackages: com.ley.dubbo.consumer.controlle
+  ## ApplicationConfig Bean
+  application:
+    id: dubbo-consumer
+    name: dubbo-consumer
+  ## RegistryConfig Bean
+  registry:
+    id: zookeeper
+    address: zookeeper://139.199.133.171:2181
+
+# Dubbo Endpoint (default status is disable)
+endpoints:
+  dubbo:
+    enabled: true
+
+management:
+  server:
+    port: 9091
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+  # Enables Dubbo All Endpoints
+  endpoint:
+    dubbo:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-configs:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-references:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"

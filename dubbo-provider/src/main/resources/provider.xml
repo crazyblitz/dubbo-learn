@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--dubbo应用配置(消费者和提供者都有)-->
+    <dubbo:application name="hello-provider"/>
+
+    <!--注册中心配置(消费者和提供者都有)-->
+    <dubbo:registry address="zookeeper://139.199.133.171:2181" id="zookeeper"/>
+
+    <!--传输协议(提供者)-->
+    <dubbo:protocol name="dubbo" id="dubbo" port="12346" serialization="kryo" status="server"/>
+
+    <!--service bean-->
+    <bean id="helloService1" class="com.ley.dubbo.provider.service.impl.HelloServiceImpl"/>
+
+    <dubbo:service interface="com.ley.dubbo.provider.service.HelloService" ref="helloService1"/>
+</beans>
