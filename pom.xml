@@ -27,7 +27,7 @@
         <dubbo.spring.boot.version>0.2.0</dubbo.spring.boot.version>
         <kryo.version>0.42</kryo.version>
         <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
-        <zookeeper.version>3.4.10</zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
     </properties>
 
     <parent>
